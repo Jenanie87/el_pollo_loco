@@ -1,6 +1,8 @@
 class World {
     character = new Character();
     statusbar = new Statusbar();
+    coinbar = new Coinbar();
+    bottlebar = new Bottlebar();
     level = level1;
     canvas;
     ctx;
@@ -38,11 +40,13 @@ class World {
         this.addObjectsToMap(this.level.backgroundObjects); 
         this.addObjectsToMap(this.level.clouds); 
         this.addObjectsToMap(this.level.enemies); 
-        this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         // Space for fixed objects
         this.addToMap(this.statusbar);
+        this.addToMap(this.coinbar);
+        this.addToMap(this.bottlebar);
         this.ctx.translate(this.camera_x, 0);
+        this.addToMap(this.character);
         this.ctx.translate(-this.camera_x, 0);
         // draw wird immer wieder aufgerufen
         requestAnimationFrame(() => {
