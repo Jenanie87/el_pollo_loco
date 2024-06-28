@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    statusbar = new Statusbar();
     level = level1;
     canvas;
     ctx;
@@ -24,6 +25,7 @@ class World {
             this.level.enemies.forEach( (enemy) => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
+                    this.statusbar.setPercentage(this.character.healthPoints);
                     this.character.isHurt = true;
                 };
             });
@@ -37,6 +39,10 @@ class World {
         this.addObjectsToMap(this.level.clouds); 
         this.addObjectsToMap(this.level.enemies); 
         this.addToMap(this.character);
+        this.ctx.translate(-this.camera_x, 0);
+        // Space for fixed objects
+        this.addToMap(this.statusbar);
+        this.ctx.translate(this.camera_x, 0);
         this.ctx.translate(-this.camera_x, 0);
         // draw wird immer wieder aufgerufen
         requestAnimationFrame(() => {

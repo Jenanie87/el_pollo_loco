@@ -18,9 +18,21 @@ class DrawableObject {
             this.imageCache[path] = img;
         });
     }
-    
+
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+
+    drawRectangle(ctx) {
+
+        if(this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 }

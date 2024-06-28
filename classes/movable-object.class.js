@@ -27,19 +27,7 @@ class MovableObject extends DrawableObject{
         return this.healthPoints == 0;
     }
 
-
-    drawRectangle(ctx) {
-
-        if(this instanceof Character || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '1';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
-
+    
     moveRight() {
         this.x += this.speed;
     }
@@ -80,7 +68,7 @@ class MovableObject extends DrawableObject{
         }
     }
 
-    
+
     checkIfHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // Differenz in Millisekunden
         timePassed = timePassed / 1000; // Differenz in sekunden
